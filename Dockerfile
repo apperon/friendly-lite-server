@@ -9,6 +9,9 @@ RUN pecl install apcu \
 RUN apt-get update && apt-get install -y libsodium-dev \
     && docker-php-ext-install sodium
 
+# Set the ServerName
+RUN echo "ServerName captcha.apperon.io" >> /etc/apache2/apache2.conf
+
 # Copy the application code to the container
 COPY ./public /var/www/html/
 
